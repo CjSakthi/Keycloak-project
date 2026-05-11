@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: regularAuthentication
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/regular_authentication?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 9090
+
+keycloak:
+  auth-server-url: http://localhost:8180
+  realm: spantag        # ← FIXED: was 'spantag', must match exactly
+  client-id: spantag-app
+  admin:
+    client-id: spantag-admin
+    client-secret: 8c2OOSUFznPRX3ffJzR54YeuG963aVUy   # ← hardcoded, no env var
+
+logging:
+  level:
+    org.springframework.security: WARN
